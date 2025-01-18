@@ -19,9 +19,12 @@ async def get_sla_insights_json(file: UploadFile = File(...)):
     
     # Generate SLA insights based on the stored data
     sla_insights = generate_sla_insights_json(chroma_obj)
-    sla_insights_json = json.loads(sla_insights)
-    
-    return JSONResponse(content=sla_insights_json)
+    i = sla_insights.find("[")
+    j = sla_insights.rfind("]")
+    print(sla_insights[i:j+1])
+    sla_insights_json = json.loads(sla_insights[i:j+1])
+    print(sla_insights_json)
+    return sla_insights_json
 
 
 @router.post("/get_sla_qna_response")

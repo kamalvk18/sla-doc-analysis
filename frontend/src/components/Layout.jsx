@@ -29,18 +29,20 @@ const Layout = () => {
   return (
     <div className="flex h-screen bg-gray-100">
       <div className="w-3/4 p-6">
-        <h1 className="text-4xl font-bold text-gray-800">Extracted SLA from Document</h1>
+        <h1 className="text-4xl font-bold text-gray-800">Extracted SLA(s) from Document</h1>
 
-        {responseData ? (
-          <div className="mt-6 p-4 border border-gray-300 rounded-md bg-white shadow-md">
-            <div className="mt-2 text-lg text-gray-600">
-              {Object.keys(responseData).map((key) => (
-                <div key={key} className="mb-2">
-                  <strong>{key}:</strong> {renderValue(responseData[key])}
-                </div>
-              ))}
+        {responseData && responseData.length > 0 ? (
+          responseData.map((item, index) => (
+            <div key={index} className="mt-6 p-4 border border-gray-300 rounded-md bg-white shadow-md">
+              <div className="mt-2 text-lg text-gray-600">
+                {Object.keys(item).map((key) => (
+                  <div key={key} className="mb-2">
+                    <strong>{key}:</strong> {renderValue(item[key])}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          ))
         ) : (
           <p className="mt-6 text-lg">No SLA data found in the uploaded document.</p>
         )}

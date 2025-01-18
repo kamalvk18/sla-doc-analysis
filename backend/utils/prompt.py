@@ -13,7 +13,8 @@ def init_prompt():
         {user_question}
 
         ### RESPONSE
-        Always Provide a valid string(which can be easily converted to json using json.loads) with no PREAMBLE containing the following keys SLA Name, Parties Involved(An array), System Concerned, Description, 
+        Always Provide or an array(even when there is only one SLA extracted) of valid strings(which can be easily converted to json using json.loads)
+        with no PREAMBLE nor Note, containing only the following keys SLA Name, Parties Involved(An array), System Concerned, Description, 
         Associated Metrics(an Array) and Page Number). If the information is not available, set the value to 'N/A'.
         """
     )

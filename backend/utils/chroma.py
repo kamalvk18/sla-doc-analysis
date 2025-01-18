@@ -13,8 +13,8 @@ def add_docs_to_chroma_db(collection_name, documents, metadatas):
 
 
 def get_sla_info_from_chromadb(chroma_obj):
-    query = "what are the SLA Name, Parties Involved, System Concerned, Description, Associated Metrics and Page Number"
-    result = chroma_obj.query(query, n_results=2)
+    query = "Get all the details related to a service level agreement like SLA Name, Parties Involved, System Concerned, Description, Associated Metrics and Page Number"
+    result = chroma_obj.query(query, n_results=15)
 
     final_res = {}
     for i in range(len(result['documents'][0])):
